@@ -1,0 +1,23 @@
+ :host {
+     height: 100%;
+     font-family: fantasy; 
+    .home {
+    	height :100%;
+    	width : 100%;
+    	background: white;
+    	h2 {
+    		color: #337ab7;
+    	}
+    	.components {
+    		vertical-align:middle;
+    		margin-top:200px;
+    		margin-bottom:200px;
+    		a {
+    			width: 65%;
+    			padding-top:20px;
+    			padding-bottom:20px;
+    			margin-top:20px;
+    		}
+    	}
+    }
+ }
