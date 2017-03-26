@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 export class SignupService  {
     authToken: any;
     element: any;
+    user: any;
     constructor(private http: Http) {
         console.log('signup constructor is called');
     }
@@ -17,5 +18,29 @@ export class SignupService  {
             headers.append('Content-Type', 'application/json');
          return this.http.post('http://localhost:3000/users/register/', element , {headers : headers})
             .map(res => res.json());
+    }
+
+    authenticate(user): Observable<any> {
+        console.log('Inside signup function', user);
+        let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+         return this.http.post('http://localhost:3000/users/login/', user , {headers : headers})
+            .map(res => res.json());
+    
+    }
+
+    storeUserData(token , user) {
+        localStorage.setItem('id_token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+
+        this.authToken = token;
+        this.user = user;
+
+    }
+
+    logout() {
+        this.authToken = null;
+        this.user = null;
+        localStorage.clear();
     }
 }
