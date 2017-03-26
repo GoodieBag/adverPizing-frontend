@@ -5,15 +5,17 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class SignupService  {
+    authToken: any;
+    element: any;
     constructor(private http: Http) {
         console.log('signup constructor is called');
     }
 
      store(element: any): Observable<any> {
         console.log('Inside signup function', element);
-         return this.http.post('http://localhost:3000/api/signup/', element)
-            .map((response: Response) => {
-                return response;
-            });
+        let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+         return this.http.post('http://localhost:3000/users/register/', element , {headers : headers})
+            .map(res => res.json());
     }
 }
