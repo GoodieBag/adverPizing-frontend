@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SignupService } from '../../services/signup.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 
@@ -12,18 +12,18 @@ export class SignupComponent implements OnInit {
     private info: any = {};
 
 
-     constructor(private signupService: SignupService,
+     constructor(private authService: AuthService,
                  private router: Router ) { }
         ngOnInit() { }
     formSubmit() {
 
         console.log('Form Sumitted with values--->', this.info);
 
-             this.signupService.store(this.info)
+             this.authService.store(this.info)
              .subscribe(
                      (response: any)  => {
                              console.log('success');
-                             this.router.navigate(['dashboard/login']);
+                             this.router.navigate(['/login']);
                          },
                      (error: any) => {
                              console.log('error');

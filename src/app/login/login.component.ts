@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SignupService } from '../../services/signup.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
     username: string;
     password: string;
-    constructor(private signupService: SignupService,
+    constructor(private authService: AuthService,
   			private router: Router) { }
     ngOnInit() { }
 
@@ -19,15 +19,15 @@ export class LoginComponent implements OnInit {
     	const user = {
     	username : this.username,
     	password : this.password
-
-    	}
-        this.signupService.authenticate(user)
+        }
+        this.authService.authenticate(user)
             .subscribe(
                      (response: any)  => {
                              console.log('success' , response.token );
-                             this.signupService.storeUserData(response.token , response.user);
+                             this.authService.storeUserData(response.token , response.user);
                              this.username = '';
                              this.password = '';
+                             this.router.navigate(['dashboard']);
                          },
                      (error: any) => {
                              console.log('please register here!');

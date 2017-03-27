@@ -3,16 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import { LoginModule } from './login/login.module';
-import { SignupModule } from './signup/signup.module';
 
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule,
-        LoginModule,
-        SignupModule
+        RouterModule
        ],
     declarations: [DashboardComponent],
     exports: [DashboardComponent]

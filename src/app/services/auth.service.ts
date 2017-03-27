@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class SignupService  {
+export class AuthService  {
     authToken: any;
     element: any;
     user: any;

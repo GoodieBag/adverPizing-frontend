@@ -7,6 +7,9 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { LoginModule } from './login/login.module';
+import { SignupModule } from './signup/signup.module';
+
 import { routes } from './app.routes';
 
 @NgModule({
@@ -18,6 +21,8 @@ import { routes } from './app.routes';
         FormsModule,
         HttpModule,
         HomeModule,
+        LoginModule,
+        SignupModule,
         DashboardModule,
         RouterModule.forRoot(routes),
     ],
