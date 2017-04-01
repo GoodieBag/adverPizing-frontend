@@ -29,6 +29,16 @@ export class AuthService  {
     
     }
 
+
+    noticeBoard(formVal): Observable<any> {
+        console.log('Inside signup function', formVal);
+        let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+         return this.http.post('http://localhost:3000/noticeboard/', formVal , {headers : headers})
+            .map(res => res.json());
+    }
+
+
     storeUserData(token , user) {
         localStorage.setItem('id_token', token);
         localStorage.setItem('user', JSON.stringify(user));
@@ -37,6 +47,13 @@ export class AuthService  {
         this.user = user;
 
     }
+
+    loadToken() {
+        const token = localStorage.getItem('id_token');
+        this.authToken = token;
+    }
+
+
 
     logout() {
         this.authToken = null;

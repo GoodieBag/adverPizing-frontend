@@ -4,11 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 
+import { AdverpizingModule } from './adverpizing/adverpizing.module';
+
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        AdverpizingModule
        ],
     declarations: [DashboardComponent],
     exports: [DashboardComponent]
