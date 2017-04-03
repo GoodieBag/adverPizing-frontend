@@ -31,10 +31,12 @@ export class AuthService  {
 
 
     noticeBoard(formVal): Observable<any> {
-        console.log('Inside signup function', formVal);
+        console.log('Inside notice function', formVal);
         let headers = new Headers();
+        this.loadToken();
+            headers.append('x-access-token', this.authToken);
             headers.append('Content-Type', 'application/json');
-         return this.http.post('http://localhost:3000/noticeboard/', formVal , {headers : headers})
+         return this.http.post('http://localhost:3000/noticeboards', formVal , {headers : headers})
             .map(res => res.json());
     }
 

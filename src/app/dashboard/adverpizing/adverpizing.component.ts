@@ -8,37 +8,48 @@ import { Router } from '@angular/router';
     styleUrls: ['./adverpizing.component.scss']
 })
 export class AdverpizingComponent  {
-    date: string;
+    date: string ;
     title: string;
-    desc: string;
+    description: string;
     deadline: string;
-    tchr: string;
+    teacher: string;
+    visible: boolean = false;
 
     constructor(private authService: AuthService,
   			private router: Router) { }
             onformSubmit(): void {
-                console.log('login with value', this.date);
+                console.log('post with value', this.date);
                 const formVal = {
                 date: this.date,
                 title: this.title,
-                desc: this.desc,
+                description: this.description,
                 deadline: this.deadline,
-                tchr: this.tchr
+                teacher: this.teacher
                 }
-                this.authService.authenticate(formVal)
+                this.authService.noticeBoard(formVal)
                     .subscribe(
                              (response: any)  => {
-                                     console.log('success' , response.token );
-                                     this.authService.storeUserData(response.token , response.user);
-                                     this.date = '';
-                                     this.title = '';
-                                     this.desc = '';
-                                     this.deadline = '';
+                                     console.log('success' , response.message.date );
+                                     this.date = 'response.message.date';
+                                     this.title = 'response.message.title';
+                                     this.description = 'response.message.description';
+                                     this.deadline = 'response.message.deadline';
+                                     this.teacher = 'response.message.teacher';
+                                     this.visible = true;
                                  },
                              (error: any) => {
-                                     console.log('please register here!');
+                                     console.log('please get admin rights!');
+                                     console.log(this.visible);
                                  }
                          );
+            }
+            setFlag(): void {
+                this.visible = false;
+                this.date = '';
+                this.title = '';
+                this.description = '';
+                this.deadline = '';
+                this.teacher = '';
             }
 }
 

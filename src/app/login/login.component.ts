@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+//import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
     selector: 'app-home',
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
     username: string;
     password: string;
     constructor(private authService: AuthService,
-  			private router: Router) { }
+  			    private router: Router,
+              ) { }
     ngOnInit() { }
 
     onLoginSubmit() : void {
@@ -27,10 +29,10 @@ export class LoginComponent implements OnInit {
                              this.authService.storeUserData(response.token , response.user);
                              this.username = '';
                              this.password = '';
-                             this.router.navigate(['dashboard']);
+                             this.router.navigate(['dashboard/adverpizing']);
                          },
                      (error: any) => {
-                             console.log('please register here!');
+                             //this.flashMessage.show('please register here!', {cssClass: 'alert-danger', timeout: 3000});
                              this.router.navigate(['dashboard/signup']);
                          }
                  );
