@@ -14,6 +14,7 @@ export class AdverpizingComponent  {
     deadline: string;
     teacher: string;
     visible: boolean = false;
+    id: string;
 
     constructor(private authService: AuthService,
   			private router: Router) { }
@@ -30,12 +31,14 @@ export class AdverpizingComponent  {
                     .subscribe(
                              (response: any)  => {
                                      console.log('success' , response.message.date );
-                                     this.date = 'response.message.date';
-                                     this.title = 'response.message.title';
-                                     this.description = 'response.message.description';
-                                     this.deadline = 'response.message.deadline';
-                                     this.teacher = 'response.message.teacher';
+                                     console.log(response.id);
+                                     this.date = response.message.date;
+                                     this.title = response.message.title;
+                                     this.description = response.message.description;
+                                     this.deadline = response.message.deadline;
+                                     this.teacher = response.message.teacher;
                                      this.visible = true;
+                                     this.id = response.id;
                                  },
                              (error: any) => {
                                      console.log('please get admin rights!');
@@ -50,6 +53,14 @@ export class AdverpizingComponent  {
                 this.description = '';
                 this.deadline = '';
                 this.teacher = '';
+            }
+            deleteItem(): void {
+                console.log('id is =============>',this.id);
+                this.visible = false;
+            }
+
+            retrieveItem(): void {
+                console.log('get all items here');
             }
 }
 

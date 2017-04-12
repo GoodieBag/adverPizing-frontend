@@ -1,5 +1,6 @@
 <div class="container home">
 	<div class="row">
+		<a (click)="retrieveItem()" class="pull-right">History</a>
 		<div class="col-md-4 col-md-offset-4 text-center components">
 			<div *ngIf="!visible">
 				<div class="row">
@@ -50,7 +51,8 @@
 			        <span>teacher :</span> <span>{{teacher}}</span>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" (click)="setFlag()" class="btn btn-default" data-dismiss="modal">Close</button>
+			      	  <button type="button" (click)="deleteItem()" class="btn btn-default" data-dismiss="modal">Delete</button>
+			        <button type="button" (click)="setFlag()" class="btn btn-default" data-dismiss="modal">Save</button>
 			      </div>
 			    </div>
 			</div>
