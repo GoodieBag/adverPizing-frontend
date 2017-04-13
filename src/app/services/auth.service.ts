@@ -48,7 +48,7 @@ export class AuthService  {
         this.loadToken();
             headers.append('x-access-token', this.authToken);
             headers.append('Content-Type', 'application/json');
-        return this.http.delete('http://localhost:3000/noticeboards/ + elementID', {headers : headers})
+        return this.http.delete('http://localhost:3000/noticeboards/' + elementID, {headers : headers})
             .map((response: Response) => {
                 console.log('Inside service destroy Map Function');
                 console.log('API Response---->', response.json());
