@@ -57,6 +57,22 @@ export class AdverpizingComponent  {
             deleteItem(): void {
                 console.log('id is =============>',this.id);
                 this.visible = false;
+                this.authService.destroy(this.id)
+                    .subscribe(
+                        (response: any)  => {
+                             console.log('success' , response);
+                             this.date = '';
+                            this.title = '';
+                            this.description = '';
+                            this.deadline = '';
+                            this.teacher = '';
+                            // this.router.navigate(['dashboard/adverpizing']);
+                         },
+                     (error: any) => {
+                             //this.flashMessage.show('please register here!', {cssClass: 'alert-danger', timeout: 3000});
+                             //this.router.navigate(['dashboard/signup']);
+                             console.log('error');
+                         });
             }
 
             retrieveItem(): void {

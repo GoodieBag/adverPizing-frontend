@@ -41,6 +41,21 @@ export class AuthService  {
     }
 
 
+    destroy(elementID: any): Observable<any> {
+        console.log('Inside  destroy function', elementID);
+         let headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        this.loadToken();
+            headers.append('x-access-token', this.authToken);
+            headers.append('Content-Type', 'application/json');
+        return this.http.delete('http://localhost:3000/noticeboards/ + elementID', {headers : headers})
+            .map((response: Response) => {
+                console.log('Inside service destroy Map Function');
+                console.log('API Response---->', response.json());
+                return response;
+            });
+    }
+
     storeUserData(token , user) {
         localStorage.setItem('id_token', token);
         localStorage.setItem('user', JSON.stringify(user));
