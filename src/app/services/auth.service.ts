@@ -56,6 +56,15 @@ export class AuthService  {
             });
     }
 
+    getAll(): Observable<any> {
+        return this.http.get('http://localhost:3000/noticeboards')
+            .map((response: Response) => {
+                console.log('Inside service getAll Map Function', response);
+                console.log('API Response---->', response.json());
+                return response.json();
+            });
+    }
+
     storeUserData(token , user) {
         localStorage.setItem('id_token', token);
         localStorage.setItem('user', JSON.stringify(user));

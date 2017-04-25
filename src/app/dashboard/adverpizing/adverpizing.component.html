@@ -1,6 +1,6 @@
 <div class="container home">
 	<div class="row">
-		<a (click)="retrieveItem()" class="pull-right">History</a>
+		<a (click)="retrieveItem()" class="pull-right history-link">History</a>
 		<div class="col-md-4 col-md-offset-4 text-center components">
 			<div *ngIf="!visible">
 				<div class="row">
@@ -58,4 +58,57 @@
 			</div>
 		</div>
 	</div>
+	<div class="panel-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>
+						Date
+					</th>
+					<th>
+						Title
+					</th>
+					<th>
+						Description
+					</th>
+					<th>
+						Deadline
+					</th>
+					<th>
+						Teacher
+					</th>
+					<th>
+						Action
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				 <ng-container *ngFor="let role of arrayList">
+					<tr>
+						<td style="width: 30%">
+                    		{{role.date}}
+                    	</td>
+                    	<td style="width: 30%">
+                    		{{role.title}}
+                    	</td>
+                    	<td style="width: 30%">
+                    		{{role.description}}
+                    	</td>
+                    	<td style="width: 30%">
+                    		{{role.deadline}}
+                    	</td>
+                    	<td style="width: 30%">
+                    		{{role.teacher}}
+                    	</td>
+                    	<td>
+                    		<a href="#">
+                    			<i class="fa fa-trash-o" aria-hidden="true"></i>
+                    		</a>
+                    	</td>
+                    </tr>
+                </ng-container>
+			</tbody>
+		</table>
+	</div>
 </div>
+

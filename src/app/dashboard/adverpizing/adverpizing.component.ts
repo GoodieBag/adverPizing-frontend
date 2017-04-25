@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { Response } from '@angular/http';
+import 'rxjs/add/observable/forkJoin';
 
 @Component({
     selector: 'app-home',
@@ -15,6 +18,10 @@ export class AdverpizingComponent  {
     teacher: string;
     visible: boolean = false;
     id: string;
+    dateInfo: string ;
+    titleInfo: string;
+    descriptionInfo: string;
+    arrayList: any[] = [];
 
     constructor(private authService: AuthService,
   			private router: Router) { }
@@ -75,9 +82,42 @@ export class AdverpizingComponent  {
                          });
             }
 
-            retrieveItem(): void {
-                console.log('get all items here');
-            }
+            // retrieveItem(): void {
+            //     console.log('get all items here');
+            //     this.authService.getAll({}).map((res: Response) => res)
+            //         .subscribe(
+            //             (response: any) => {
+            //                 console.log('success====>', response);
+            //               // var obj = response.json();
+            //               //var res = JSON.parse(JSON.stringify(response.data));
+            //               // console.log('result is =======>', res);
+            //                //this.arrayList = res;
+
+            //                //console.log('array element is', this.arrayList);
+            //                // this.initializePermissionsArray(response[3].data, this.selectedRoleID);
+            //             },
+            //             (error: any) => {
+            //                 console.log('failed to load');
+            //                 }
+            //             );
+            // }
+
+            retrieveItem() {
+        Observable.forkJoin(
+            this.authService.getAll().map((res: Response) => res)
+            ).subscribe(
+                (response: any) => {
+                    console.log('returned data is ====>', response[0]);
+                    this.arrayList = JSON.parse(JSON.stringify(response[0]));
+                },
+                (error: any) => {
+                    let errMsg = JSON.parse(error._body).message;
+                    //this.notificationService.error(errMsg, 'ERROR');
+                    //let link = ['dashboard/setup-business-employees'];
+                    //this.router.navigate(link);
+                }
+            );
+    }
 }
 
 
