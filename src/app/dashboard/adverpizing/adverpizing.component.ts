@@ -61,7 +61,7 @@ export class AdverpizingComponent  {
                 this.deadline = '';
                 this.teacher = '';
             }
-            deleteItem(): void {
+            destroyItem(): void {
                 console.log('id is =============>',this.id);
                 this.visible = false;
                 this.authService.destroy(this.id)
@@ -117,6 +117,18 @@ export class AdverpizingComponent  {
                     //this.router.navigate(link);
                 }
             );
+    }
+
+    removeItem(userId: any): void {
+        console.log('user id is==========>', userId);
+        this.authService.destroy(userId)
+                    .subscribe(
+                        (response: any)  => {
+                             console.log('success' , response);
+                         },
+                     (error: any) => {
+                             console.log('error');
+                         });
     }
 }
 
