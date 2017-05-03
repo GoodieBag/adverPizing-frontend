@@ -17,6 +17,7 @@ export class AdverpizingComponent  {
     deadline: string;
     teacher: string;
     visible: boolean = false;
+    displayTable: boolean = false;
     id: string;
     dateInfo: string ;
     titleInfo: string;
@@ -82,25 +83,6 @@ export class AdverpizingComponent  {
                          });
             }
 
-            // retrieveItem(): void {
-            //     console.log('get all items here');
-            //     this.authService.getAll({}).map((res: Response) => res)
-            //         .subscribe(
-            //             (response: any) => {
-            //                 console.log('success====>', response);
-            //               // var obj = response.json();
-            //               //var res = JSON.parse(JSON.stringify(response.data));
-            //               // console.log('result is =======>', res);
-            //                //this.arrayList = res;
-
-            //                //console.log('array element is', this.arrayList);
-            //                // this.initializePermissionsArray(response[3].data, this.selectedRoleID);
-            //             },
-            //             (error: any) => {
-            //                 console.log('failed to load');
-            //                 }
-            //             );
-            // }
 
             retrieveItem() {
         Observable.forkJoin(
@@ -109,6 +91,7 @@ export class AdverpizingComponent  {
                 (response: any) => {
                     console.log('returned data is ====>', response[0]);
                     this.arrayList = JSON.parse(JSON.stringify(response[0]));
+                    this.displayTable = true;
                 },
                 (error: any) => {
                     let errMsg = JSON.parse(error._body).message;
@@ -129,6 +112,10 @@ export class AdverpizingComponent  {
                      (error: any) => {
                              console.log('error');
                          });
+    }
+    hideTable(): void {
+        this.displayTable = false;
+        console.log('display table value====>', this.displayTable);
     }
 }
 

@@ -4,4 +4,27 @@ form {
 
 .history-link {
 	cursor: pointer;
+	padding-right: 30px;
+	padding-top: 30px;
 }
+
+:host {
+     font-family: Roboto; 
+    	width: 100%;
+    	height: 100%;
+    .home {
+    	width: 100%;
+    	height: 1200px;
+    	bottom: 0;
+        padding-bottom :200px;
+        background: white;
+    	h2 {
+    		color: #337ab7;
+    	}
+    	.components {
+            display: table;
+            margin: auto;
+            width: 300px;
+    	}
+    }
+ }
