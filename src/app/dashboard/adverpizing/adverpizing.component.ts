@@ -108,6 +108,13 @@ export class AdverpizingComponent  {
                     .subscribe(
                         (response: any)  => {
                              console.log('success' , response);
+                             this.visible = false;
+                             this.date = '';
+                            this.title = '';
+                            this.description = '';
+                            this.deadline = '';
+                            this.teacher = '';
+
                          },
                      (error: any) => {
                              console.log('error');
@@ -115,7 +122,9 @@ export class AdverpizingComponent  {
     }
     hideTable(): void {
         this.displayTable = false;
+        this.visible = false;
         console.log('display table value====>', this.displayTable);
+        console.log('display visible value', this.visible);
     }
 }
 
