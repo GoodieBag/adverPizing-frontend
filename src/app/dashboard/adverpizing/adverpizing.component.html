@@ -1,7 +1,7 @@
 <div class="container home">
 	<div class="row">
 		<a (click)="retrieveItem()" class="pull-right history-link" *ngIf="!displayTable">History</a>
-		<div class="row p-15" *ngIf="displayTable">
+		<div class="row p-25" *ngIf="displayTable">
 			<div class="pull-right">
 				<button class="btn btn-primary" (click)="hideTable()"> Back</button>
 			</div>
@@ -88,7 +88,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				 <ng-container *ngFor="let role of arrayList">
+				 <ng-container *ngFor="let role of arrayList | paginate: { itemsPerPage: 5, currentPage: p }">
 					<tr>
 						<td style="width: 30%">
                     		{{role.date}}
@@ -115,8 +115,11 @@
 			</tbody>
 		</table>
 		<div class="row p-15">
-			<div class="pull-right">
+			<!-- <div class="pull-right">
 				<button class="btn btn-primary" (click)="hideTable()"> Back</button>
+			</div> -->
+			<div class="pull-right">
+				<pagination-controls (pageChange)="p = $event"></pagination-controls>
 			</div>
 		</div>
 	</div>
