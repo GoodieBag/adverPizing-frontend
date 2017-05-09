@@ -103,7 +103,7 @@ export class AdverpizingComponent  {
     }
 
     removeItem(userId: any): void {
-        console.log('user id is==========>', userId);
+            
         this.authService.destroy(userId)
                     .subscribe(
                         (response: any)  => {
@@ -114,6 +114,18 @@ export class AdverpizingComponent  {
                             this.description = '';
                             this.deadline = '';
                             this.teacher = '';
+                            // if (this.id == userId) {
+                            //  this.arrayList.splice(0 , 1);
+                            // }
+
+                            console.log('length of the array', this.arrayList.length);
+                            for ( var count = 0; count < this.arrayList.length; count++) {
+                                if (this.arrayList[count]['_id'] === userId) {
+                                    this.arrayList.splice(count , 1);
+                                    console.log('array element inside this is', this.arrayList[count]['_id']);
+                                }
+                            }
+                        console.log('user id is==========>', userId);           
 
                          },
                      (error: any) => {

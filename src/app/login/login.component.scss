@@ -18,3 +18,22 @@
     	}
     }
  }
+.alert-danger
+{
+    background-color: #2b1c4a !important;
+    opacity: 0.7;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 100px !important;
+    width: 100px !important;
+    overflow: hidden;
+    z-index: 9999;
+}
+ 
+.flash-message
+{
+    z-index: 10000;
+    position: relative;
+    color:#2b1c4a;
+}

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-//import { FlashMessagesService } from 'angular2-flash-messages';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { ToastrService } from 'toastr-ng2';
 
 @Component({
     selector: 'app-home',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
     password: string;
     constructor(private authService: AuthService,
   			    private router: Router,
-              ) { }
+              private flashMessagesService: FlashMessagesService,
+              private toastrService: ToastrService ) { }
     ngOnInit() { }
 
     onLoginSubmit() : void {
@@ -29,10 +31,13 @@ export class LoginComponent implements OnInit {
                              this.authService.storeUserData(response.token , response.user);
                              this.username = '';
                              this.password = '';
+                             this.toastrService.success('Successfully Logged In', 'Success!');
                              this.router.navigate(['dashboard/adverpizing']);
                          },
                      (error: any) => {
-                             //this.flashMessage.show('please register here!', {cssClass: 'alert-danger', timeout: 3000});
+                             //this.flashMessagesService.show('please register here!', {cssClass: 'alert-danger', timeout: 3000});
+                             this.toastrService.error('Incorrect password or emailID', 'Error');
+                             console.log('error');
                              this.router.navigate(['dashboard/signup']);
                          }
                  );

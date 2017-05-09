@@ -11,6 +11,8 @@ import { LoginModule } from './login/login.module';
 import { SignupModule } from './signup/signup.module';
 
 import { routes } from './app.routes';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ToastrModule } from 'toastr-ng2';
 
 @NgModule({
     declarations: [
@@ -25,6 +27,8 @@ import { routes } from './app.routes';
         SignupModule,
         DashboardModule,
         RouterModule.forRoot(routes),
+        FlashMessagesModule,
+        ToastrModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]
