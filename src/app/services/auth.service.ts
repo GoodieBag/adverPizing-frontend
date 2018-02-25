@@ -16,7 +16,7 @@ export class AuthService  {
         console.log('Inside signup function', element);
         let headers = new Headers();
             headers.append('Content-Type', 'application/json');
-         return this.http.post('http://localhost:3000/users/register/', element , {headers : headers})
+         return this.http.post('http://localhost:8080/users/register/', element , {headers : headers})
             .map(res => res.json());
     }
 
@@ -24,7 +24,7 @@ export class AuthService  {
         console.log('Inside signup function', user);
         let headers = new Headers();
             headers.append('Content-Type', 'application/json');
-         return this.http.post('http://localhost:3000/users/login/', user , {headers : headers})
+         return this.http.post('http://localhost:8080/users/login/', user , {headers : headers})
             .map(res => res.json());
     
     }
@@ -36,7 +36,7 @@ export class AuthService  {
         this.loadToken();
             headers.append('x-access-token', this.authToken);
             headers.append('Content-Type', 'application/json');
-         return this.http.post('http://localhost:3000/noticeboards', formVal , {headers : headers})
+         return this.http.post('http://localhost:8080/noticeboards', formVal , {headers : headers})
             .map(res => res.json());
     }
 
@@ -48,7 +48,7 @@ export class AuthService  {
         this.loadToken();
             headers.append('x-access-token', this.authToken);
             headers.append('Content-Type', 'application/json');
-        return this.http.delete('http://localhost:3000/noticeboards/' + elementID, {headers : headers})
+        return this.http.delete('http://localhost:8080/noticeboards/' + elementID, {headers : headers})
             .map((response: Response) => {
                 console.log('Inside service destroy Map Function');
                 console.log('API Response---->', response.json());
@@ -57,7 +57,7 @@ export class AuthService  {
     }
 
     getAll(): Observable<any> {
-        return this.http.get('http://localhost:3000/noticeboards')
+        return this.http.get('http://localhost:8080/noticeboards')
             .map((response: Response) => {
                 console.log('Inside service getAll Map Function', response);
                 console.log('API Response---->', response.json());

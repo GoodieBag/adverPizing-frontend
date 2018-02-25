@@ -1,25 +1,32 @@
-<div class="container home">
+<div class="signup-wrapper">
 	<div class="row">
-		<div class="col-12  text-center">
-			<h2> Create an Account </h2>
+		<div class="pull-left">
+			<button class="btn btn-primary back-btn" (click)="navigate()"> Back</button>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-12 text-center components">
-			<div class="row">
-				<div class="col-12">
-					<form (submit)="formSubmit()">
-						<div class="form-group">
-							<input type="text" class="form-control" 
-							id="email" placeholder="Enter email" 
-							[(ngModel)]="info.username" name="username">
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="password" placeholder="Password"
-							[(ngModel)]="info.password" name="password">
-						</div>
-						<button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
-					</form>
+	<div class="container home">
+		<div class="row">
+			<div class="col-12  text-center">
+				<h2> Create an Account </h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 text-center components">
+				<div class="row">
+					<div class="col-12">
+						<form (submit)="formSubmit()">
+							<div class="form-group">
+								<input type="text" class="form-control" 
+								id="email" placeholder="Enter email" 
+								[(ngModel)]="info.username" name="username">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" id="password" placeholder="Password"
+								[(ngModel)]="info.password" name="password">
+							</div>
+							<button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
